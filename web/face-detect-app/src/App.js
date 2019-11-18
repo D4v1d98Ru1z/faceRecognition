@@ -9,7 +9,7 @@ function App() {
   // eslint-disable-next-line
   const [data, setData] = useState([])
   // eslint-disable-next-line
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState('https://www.kienyke.com/wp-content/uploads/2018/10/selfie.jpg')
 
   const handleOnChange = event => {
     setImage(event.target.value)
@@ -19,7 +19,6 @@ function App() {
     event.preventDefault()
     console.log('click')
     try {
-      const testImage = `https://www.elsiglodetorreon.com.mx/m/i/2019/10/1235159.jpeg`
       const fetchOptions = {
         method: 'POST',
         headers: {
@@ -55,6 +54,7 @@ function App() {
             className="inputFile"
             placeholder="Upload image"
             onChange={handleOnChange}
+            value={image}
           />
           <button
             className="buttonFile"
@@ -75,13 +75,18 @@ function App() {
           ))
         }
         </ul>
+        <img
+          src={image}
+          width={120}
+          height={80}
+        />
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href={image}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Watch the image: {image}
+          Link of the image: {image}
         </a>
       </header>
     </div>
