@@ -11,7 +11,13 @@ function App() {
   // eslint-disable-next-line
   const [image, setImage] = useState('')
 
-  const handleClickImage = async() => {
+  const handleOnChange = event => {
+    setImage(event.target.value)
+  }
+
+  const handleClickImage = async event => {
+    event.preventDefault()
+    console.log('click')
     try {
       const testImage = `https://www.elsiglodetorreon.com.mx/m/i/2019/10/1235159.jpeg`
       const fetchOptions = {
@@ -21,7 +27,7 @@ function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          image: testImage,
+          image: image,
         })
       }
 
@@ -48,6 +54,7 @@ function App() {
           <input
             className="inputFile"
             placeholder="Upload image"
+            onChange={handleOnChange}
           />
           <button
             className="buttonFile"
@@ -56,7 +63,7 @@ function App() {
             Upload
           </button>
         </div>
-        <h3>Image attributes: </h3>
+        <h3 className="titleAtribute">Image attributes: </h3>
         <ul>
         {
           data.map(item => (
@@ -74,7 +81,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Watch the image
+          Watch the image: {image}
         </a>
       </header>
     </div>
