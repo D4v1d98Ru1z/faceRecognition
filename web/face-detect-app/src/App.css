@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.containerFile {
+  display: flex;
+}
+
+.inputFile {
+  border: 1px;
+  padding: 1em 2em;
+  border-radius: 5px;
+}
+
+.buttonFile {
+  margin-left: 2em;
+  background-color: #09d3ac;
+  color: white;
+  border-color: #09d3ac;
+  border-radius: 5px;
+}
