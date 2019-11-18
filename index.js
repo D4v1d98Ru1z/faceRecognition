@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const axios = require('axios')
 const bodyParser = require('body-parser')
@@ -5,7 +6,7 @@ const bodyParser = require('body-parser')
 const app = express()
 
 // API key from Azure
-const ApiKey = `15c2a09521ed43ee977aac9c15df3ec0`
+const ApiKey = process.env.APIKEY
 // Azure endpoint URL - Face API
 const AzureEndpoint = `https://westus.api.cognitive.microsoft.com/face/v1.0`
 
