@@ -12,7 +12,7 @@ const AzureEndpoint = `https://westus.api.cognitive.microsoft.com/face/v1.0`
 // Base instance for axios request
 const baseInstanceOptions = {
   baseURL: AzureEndpoint,
-  timeout: 5000,
+  timeout: 50000,
   headers: {
     'Content-Type': 'application/json',
     'Ocp-Apim-Subscription-Key': ApiKey
@@ -23,7 +23,18 @@ const baseInstanceOptions = {
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.get('/create-facelist', async (req, res) => {
+// Allow cors middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+
+  app.options('*', (res, req) => {
+    res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS')
+  })
+})
+
+app.post('/create-facelist', async (req, res) => {
   try {
     const instanceOptions = {...baseInstanceOptions}
     const instance = axios.create(instanceOptions)
