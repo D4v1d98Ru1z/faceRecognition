@@ -77,8 +77,9 @@ function App() {
         </ul>
         <img
           src={image}
-          width={120}
-          height={80}
+          width={220}
+          height={180}
+          alt={image}
         />
         <a
           className="App-link"
